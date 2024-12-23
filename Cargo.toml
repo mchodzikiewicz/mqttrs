@@ -19,14 +19,15 @@ default = ["std"]
 
 # Implements serde::{Serialize,Deserialize} on mqttrs::Pid.
 derive = ["serde", "heapless/serde"]
-std = ["bytes/std", "serde/std"]
+std = ["dep:bytes", "bytes/std", "serde/std"]
 defmt = ["dep:defmt", "heapless/defmt-03"]
 
 [dependencies]
-bytes = { version = "1.0", default-features = false}
+bytes = { version = "1.0", default-features = false, optional = true}
 serde = { version = "1.0", features = ["derive"], optional = true }
 heapless = { version = "0.8" }
 defmt = { version = "0.3.10", optional = true }
 
 [dev-dependencies]
 proptest = "0.10.0"
+bytes = { version = "1.0", default-features = false}
